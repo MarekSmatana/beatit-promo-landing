@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, FileText, Mail, Send, ShieldCheck } from "lucide-react";
+import { ArrowLeft, Mail, Send } from "lucide-react"
 import { BrandMark } from "./BrandMark";
 import { legalUpdatedDate, privacyPolicy, supportEmail, termsOfUse } from "./legalContent";
 
@@ -33,57 +33,87 @@ function PageHeader({ eyebrow, title, subtitle }) {
   );
 }
 
+function LegalHeader({ eyebrow, title, subtitle }) {
+	return (
+		<section className="border-b border-ink/10 bg-white px-5 pb-10 pt-32 dark:border-white/10 dark:bg-coal sm:px-8">
+			<div className="mx-auto max-w-3xl">
+				<a
+					href="/"
+					className="inline-flex items-center gap-2 text-sm font-medium text-ink/60 transition hover:text-ink dark:text-white/60 dark:hover:text-white"
+				>
+					<ArrowLeft size={16} strokeWidth={2.2} />
+					Back to home
+				</a>
+				<p className="mt-10 text-sm font-medium text-ink/55 dark:text-white/50">
+					{eyebrow}
+				</p>
+				<h1 className="mt-3 text-4xl font-semibold tracking-normal text-ink dark:text-white sm:text-5xl">
+					{title}
+				</h1>
+				<p className="mt-5 text-base leading-7 text-ink/70 dark:text-white/65">
+					{subtitle}
+				</p>
+			</div>
+		</section>
+	)
+}
+
 function LegalSection({ section }) {
   return (
-    <section className="rounded-[2rem] border border-ink/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/10 sm:p-8">
-      <h2 className="text-2xl font-black text-ink dark:text-white">{section.title}</h2>
-      {section.body?.map((paragraph) => (
-        <p key={paragraph} className="mt-4 text-base font-semibold leading-8 text-ink/70 dark:text-white/70">
-          {paragraph}
-        </p>
-      ))}
-      {section.bullets ? (
-        <ul className="mt-5 grid gap-3">
-          {section.bullets.map((item) => (
-            <li key={item} className="flex gap-3 text-base font-semibold leading-7 text-ink/70 dark:text-white/70">
-              <span className="mt-2 size-2 shrink-0 rounded-full bg-punch" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-    </section>
-  );
+		<section className="border-t border-ink/10 py-8 dark:border-white/10">
+			<h2 className="text-xl font-semibold tracking-normal text-ink dark:text-white">
+				{section.title}
+			</h2>
+			{section.body?.map((paragraph) => (
+				<p
+					key={paragraph}
+					className="mt-4 text-base leading-8 text-ink/75 dark:text-white/70"
+				>
+					{paragraph}
+				</p>
+			))}
+			{section.bullets ? (
+				<ul className="mt-4 list-disc space-y-3 pl-6 text-base leading-8 text-ink/75 dark:text-white/70">
+					{section.bullets.map((item) => (
+						<li key={item} className="pl-1">
+							{item}
+						</li>
+					))}
+				</ul>
+			) : null}
+		</section>
+	)
 }
 
 export function LegalPage({ page }) {
-  const isPrivacy = page.title === "Privacy Policy";
-  const Icon = isPrivacy ? ShieldCheck : FileText;
-
-  return (
-    <>
-      <PageHeader eyebrow={page.eyebrow} title={page.title} subtitle={page.subtitle} />
-      <main className="mx-auto grid max-w-5xl gap-5 px-5 py-14 sm:px-8 lg:py-20">
-        <div className="rounded-[2rem] bg-ink p-6 text-white shadow-hard dark:bg-white dark:text-coal sm:p-8">
-          <div className="flex items-start gap-4">
-            <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-punch text-white">
-              <Icon size={24} strokeWidth={2.8} />
-            </span>
-            <div className="grid gap-3">
-              {page.intro.map((paragraph) => (
-                <p key={paragraph} className="text-base font-semibold leading-8 text-white/80 dark:text-coal/70">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        </div>
-        {page.sections.map((section) => (
-          <LegalSection key={section.title} section={section} />
-        ))}
-      </main>
-    </>
-  );
+	return (
+		<>
+			<LegalHeader
+				eyebrow={page.eyebrow}
+				title={page.title}
+				subtitle={page.subtitle}
+			/>
+			<main className="mx-auto max-w-3xl px-5 py-10 sm:px-8 lg:py-14">
+				<div className="pb-8">
+					{page.intro.map((paragraph, index) => (
+						<p
+							key={paragraph}
+							className={
+								index === 0
+									? "text-sm font-medium text-ink/60 dark:text-white/55"
+									: "mt-4 text-base leading-8 text-ink/75 dark:text-white/70"
+							}
+						>
+							{paragraph}
+						</p>
+					))}
+				</div>
+				{page.sections.map((section) => (
+					<LegalSection key={section.title} section={section} />
+				))}
+			</main>
+		</>
+	)
 }
 
 export function ContactPage() {
@@ -104,96 +134,96 @@ export function ContactPage() {
   }
 
   return (
-    <>
-      <PageHeader
-        eyebrow="Support"
-        title="Contact"
-        subtitle={`Need help with Beat It, subscriptions, account deletion, privacy, or store review questions? Email ${supportEmail}.`}
-      />
-      <main className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:py-20">
-        <aside className="rounded-[2rem] bg-ink p-7 text-white shadow-hard dark:bg-white dark:text-coal">
-          <span className="grid size-12 place-items-center rounded-2xl bg-punch text-white">
-            <Mail size={24} strokeWidth={2.8} />
-          </span>
-          <h2 className="mt-6 text-3xl font-black">Support email</h2>
-          <a className="mt-3 block text-xl font-black text-punch" href={`mailto:${supportEmail}`}>
-            {supportEmail}
-          </a>
-          <p className="mt-6 text-base font-semibold leading-8 text-white/70 dark:text-coal/70">
-            This static form opens a prefilled email draft. No message is sent until you send it
-            from your email app.
-          </p>
-          <div className="mt-8 rounded-2xl border border-white/10 bg-white/10 p-4 text-sm font-semibold leading-6 text-white/70 dark:border-coal/10 dark:bg-coal/5 dark:text-coal/70">
-            Privacy Policy and Terms of Use last updated {legalUpdatedDate}.
-          </div>
-        </aside>
+		<>
+			<PageHeader
+				eyebrow="Support"
+				title="Contact"
+				subtitle={`Need help with Beat It, subscriptions, account deletion, privacy, or store review questions? Email ${supportEmail}.`}
+			/>
+			<main className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:py-20">
+				<aside className="rounded-[2rem] bg-ink p-7 text-white shadow-hard dark:bg-white dark:text-coal">
+					<span className="grid size-12 place-items-center rounded-2xl bg-punch text-white">
+						<Mail size={24} strokeWidth={2.8} />
+					</span>
+					<h2 className="mt-6 text-3xl font-black">Support email</h2>
+					<a
+						className="mt-3 block text-xl font-black text-punch"
+						href={`mailto:${supportEmail}`}
+					>
+						{supportEmail}
+					</a>
+					<p className="mt-6 text-base font-semibold leading-8 text-white/70 dark:text-coal/70">
+						This form opens a prefilled email draft. No message is sent until
+						you send it from your email app.
+					</p>
+				</aside>
 
-        <form
-          onSubmit={handleSubmit}
-          className="rounded-[2rem] border border-ink/10 bg-white p-6 shadow-hard dark:border-white/10 dark:bg-white/10 dark:shadow-hard-dark sm:p-8"
-        >
-          <div className="grid gap-5 sm:grid-cols-2">
-            <label className="grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
-              Name
-              <input
-                required
-                name="name"
-                autoComplete="name"
-                className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
-                placeholder="Your name"
-              />
-            </label>
-            <label className="grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
-              Email
-              <input
-                required
-                name="email"
-                type="email"
-                autoComplete="email"
-                className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
-                placeholder="you@example.com"
-              />
-            </label>
-          </div>
-          <label className="mt-5 grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
-            Topic
-            <select
-              name="topic"
-              className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
-            >
-              <option>Support</option>
-              <option>Subscription</option>
-              <option>Account deletion</option>
-              <option>Privacy request</option>
-              <option>Store review</option>
-            </select>
-          </label>
-          <label className="mt-5 grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
-            Message
-            <textarea
-              required
-              name="message"
-              rows={8}
-              className="resize-y rounded-2xl border border-ink/10 bg-white px-4 py-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
-              placeholder="Tell us what you need help with."
-            />
-          </label>
-          {status ? (
-            <p className="mt-5 rounded-2xl bg-emerald-500/10 p-4 text-sm font-black text-emerald-700 dark:text-emerald-300">
-              {status}
-            </p>
-          ) : null}
-          <button
-            type="submit"
-            className="mt-6 inline-flex h-14 w-full items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1 sm:w-auto"
-          >
-            <Send size={19} strokeWidth={2.8} />
-            Open email draft
-          </button>
-        </form>
-      </main>
-    </>
-  );
+				<form
+					onSubmit={handleSubmit}
+					className="rounded-[2rem] border border-ink/10 bg-white p-6 shadow-hard dark:border-white/10 dark:bg-white/10 dark:shadow-hard-dark sm:p-8"
+				>
+					<div className="grid gap-5 sm:grid-cols-2">
+						<label className="grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
+							Name
+							<input
+								required
+								name="name"
+								autoComplete="name"
+								className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
+								placeholder="Your name"
+							/>
+						</label>
+						<label className="grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
+							Email
+							<input
+								required
+								name="email"
+								type="email"
+								autoComplete="email"
+								className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
+								placeholder="you@example.com"
+							/>
+						</label>
+					</div>
+					<label className="mt-5 grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
+						Topic
+						<select
+							name="topic"
+							className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
+						>
+							<option>Support</option>
+							<option>Subscription</option>
+							<option>Account deletion</option>
+							<option>Privacy request</option>
+							<option>Store review</option>
+						</select>
+					</label>
+					<label className="mt-5 grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
+						Message
+						<textarea
+							required
+							name="message"
+							rows={8}
+							className="resize-y rounded-2xl border border-ink/10 bg-white px-4 py-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
+							placeholder="Tell us what you need help with."
+						/>
+					</label>
+					{status ? (
+						<p className="mt-5 rounded-2xl bg-emerald-500/10 p-4 text-sm font-black text-emerald-700 dark:text-emerald-300">
+							{status}
+						</p>
+					) : null}
+					<button
+						type="submit"
+						className="mt-6 inline-flex h-14 w-full items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1 sm:w-auto"
+					>
+						<Send size={19} strokeWidth={2.8} />
+						Open email draft
+					</button>
+				</form>
+			</main>
+		</>
+	)
 }
 
 export function Footer() {
