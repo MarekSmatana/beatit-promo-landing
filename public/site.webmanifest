@@ -1,7 +1,7 @@
 {
   "name": "Beat It",
   "short_name": "Beat It",
-  "description": "Workout planning, set tracking, progress check-ins, and AI-assisted training tools.",
+  "description": "Workout planning, set tracking, progress check-ins, streaks, and AI-assisted performance insights.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

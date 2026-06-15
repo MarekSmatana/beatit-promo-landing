@@ -7,8 +7,6 @@ This project is a static Vite React site. Cloudflare should build it with:
 - Node.js version: `22.16.0` from `.node-version`
 - Wrangler Pages output: `./dist` from `wrangler.jsonc`
 
-The domain below uses `getbeitit.app` exactly as provided. If the purchased domain is `getbeatit.app`, substitute that spelling everywhere.
-
 ## Option A: Git Integration
 
 Use this for automatic deployments after every push.
@@ -67,18 +65,18 @@ Use this if you want to deploy from your computer without Git-based auto deploys
 
 5. Open the generated `*.pages.dev` URL and verify the routes listed above.
 
-## Attach `getbeitit.app`
+## Attach `getbeatit.app`
 
 1. In Cloudflare, go to **Workers & Pages**.
 2. Open the `beatit-promo-landing` Pages project.
 3. Go to **Custom domains**.
 4. Select **Set up a domain**.
-5. Enter `getbeitit.app`.
+5. Enter `getbeatit.app`.
 6. Continue and let Cloudflare create or confirm the DNS record.
 7. Wait for the custom domain to show **Active**.
-8. Visit `https://getbeitit.app/`.
+8. Visit `https://getbeatit.app/`.
 
-For `www.getbeitit.app`, repeat the custom domain flow with `www.getbeitit.app`. Then create a Cloudflare **Rules > Redirect Rules** rule to redirect `www.getbeitit.app/*` to `https://getbeitit.app/$1` with status `301`.
+For `www.getbeatit.app`, repeat the custom domain flow with `www.getbeatit.app`. Then create a Cloudflare **Rules > Redirect Rules** rule to redirect `www.getbeatit.app/*` to `https://getbeatit.app/$1` with status `301`.
 
 ## Local Checks
 

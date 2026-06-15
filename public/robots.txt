@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://getbeitit.app/sitemap.xml
+Sitemap: https://getbeatit.app/sitemap.xml
