@@ -94,7 +94,7 @@ export const featureSections = [
     headline: "Start with a workout that already fits.",
     body: "Create a complete, editable plan from goal, equipment, target muscles, structure, and difficulty. It feels quick enough for the gym floor, but structured enough for real progression.",
     points: ["Editable blocks", "Equipment-aware planning", "Warm-up and cooldown support"],
-    image: "/screens/1.png",
+    image: "/screens/2.png",
   },
   {
     icon: Dumbbell,
@@ -102,7 +102,7 @@ export const featureSections = [
     headline: "Stay locked into the current set.",
     body: "The player keeps the active exercise, previous results, timer, next movement, and set completion status in one dense training surface.",
     points: ["Previous set memory", "Rest-aware flow", "Clear next-set context"],
-    image: "/screens/5.png",
+    image: "/screens/4.png",
     reverse: true,
   },
   {
@@ -119,7 +119,7 @@ export const featureSections = [
     headline: "Turn training into a visible rhythm.",
     body: "The calendar and streak views make it easy to understand planned work, logged activity, rest days, and where the week is heading.",
     points: ["Streak safety", "Calendar activity", "Weekly targets"],
-    image: "/screens/2.png",
+    image: "/screens/7.png",
     reverse: true,
   },
   {
@@ -128,7 +128,7 @@ export const featureSections = [
     headline: "Track progress beyond the bar.",
     body: "Progress photos and measurements keep physique, bodyweight, and training history connected so changes do not get lost between workouts.",
     points: ["Photo timeline", "Measurement trends", "Weight history"],
-    image: "/screens/8.png",
+    image: "/screens/5.png",
   },
   {
     icon: Moon,
@@ -136,13 +136,7 @@ export const featureSections = [
     headline: "Looks sharp when the lights go down.",
     body: "Beat It carries the same high-contrast workout UI into dark mode, with strong red actions and quiet training stats.",
     points: ["Low-glare dashboard", "Readable stats", "Red action accents"],
-    image: "/screens/6.png",
+    image: "/screens/8.png",
     reverse: true,
   },
-];
-
-export const stats = [
-  { value: "4", label: "training surfaces" },
-  { value: "8", label: "promo-ready screens" },
-  { value: "24/7", label: "dark mode support" },
 ];
