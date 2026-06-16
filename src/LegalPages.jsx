@@ -228,38 +228,39 @@ export function ContactPage() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-ink/10 bg-white px-5 py-10 dark:border-white/10 dark:bg-coal sm:px-8">
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div>
-          <a href="/" className="inline-flex items-center gap-3" aria-label="Beat It home">
-            <BrandMark size="sm" />
-            <span className="text-base font-black uppercase tracking-[0.22em] text-ink dark:text-white">
-              Beat It
-            </span>
-          </a>
-          <p className="mt-4 max-w-2xl text-sm font-semibold leading-6 text-ink/60 dark:text-white/60">
-            Workout planning, set tracking, progress check-ins, and AI-assisted training tools.
-            Beat It is not medical advice.
-          </p>
-        </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
-          <a className="transition hover:text-punch" href="/privacy/">
-            Privacy
-          </a>
-          <a className="transition hover:text-punch" href="/terms/">
-            Terms
-          </a>
-          <a className="transition hover:text-punch" href="/contact/">
-            Contact
-          </a>
-          <a className="transition hover:text-punch" href={`mailto:${supportEmail}`}>
-            Email
-          </a>
-        </nav>
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-ink/40 dark:text-white/35 lg:col-span-2">
-          © 2026 Buildit Studio. All rights reserved.
-        </p>
-      </div>
-    </footer>
-  );
+		<footer className="border-t border-ink/10 bg-white px-5 py-10 dark:border-white/10 dark:bg-coal sm:px-8">
+			<div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+				<div>
+					<a
+						href="/"
+						className="inline-flex items-center gap-3"
+						aria-label="Beat It home"
+					>
+						<BrandMark size="sm" />
+						<span className="text-base font-black uppercase tracking-[0.22em] text-ink dark:text-white">
+							Beat It
+						</span>
+					</a>
+					<p className="mt-4 max-w-2xl text-sm font-semibold leading-6 text-ink/60 dark:text-white/60">
+						Workout planning, set tracking, progress check-ins, and AI-assisted
+						training tools. Beat It is not medical advice.
+					</p>
+				</div>
+				<nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
+					<a className="transition hover:text-punch" href="/privacy/">
+						Privacy
+					</a>
+					<a className="transition hover:text-punch" href="/terms/">
+						Terms
+					</a>
+					<a className="transition hover:text-punch" href="/contact/">
+						Contact
+					</a>
+				</nav>
+				<p className="text-xs font-black uppercase tracking-[0.18em] text-ink/40 dark:text-white/35 lg:col-span-2">
+					© 2026 Buildit Studio. All rights reserved.
+				</p>
+			</div>
+		</footer>
+	)
 }
