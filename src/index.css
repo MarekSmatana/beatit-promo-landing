@@ -66,6 +66,10 @@ body {
     linear-gradient(135deg, rgba(255, 59, 63, 0.18), transparent 46%);
 }
 
+.dark .hero-heading-shadow {
+  text-shadow: 0 0 12px black;
+}
+
 .text-balance {
   text-wrap: balance;
 }

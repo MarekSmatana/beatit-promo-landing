@@ -263,7 +263,7 @@ function Hero({ dark }) {
       className="hero-grid relative isolate overflow-hidden pt-24"
     >
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-white dark:to-coal" />
-      <div className="mx-auto grid min-h-[calc(100svh-6rem)] max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:py-16">
+      <div className="mx-auto grid min-h-[calc(100svh-6rem)] max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:py-16">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -272,7 +272,7 @@ function Hero({ dark }) {
         >
           <motion.h1
             variants={fadeUp}
-            className="max-w-4xl text-balance text-[2.8rem] font-black uppercase leading-[0.88] tracking-normal text-ink dark:text-white min-[360px]:text-[3.25rem] sm:text-7xl sm:leading-[0.86] lg:text-8xl"
+            className="hero-heading-shadow max-w-4xl text-balance text-[2.8rem] font-black uppercase leading-[0.88] tracking-normal text-ink dark:text-white min-[360px]:text-[3.25rem] sm:text-7xl sm:leading-[0.86] lg:text-[5rem] lg:leading-[0.86] xl:text-[5.25rem]"
           >
             Play workouts.
             <span className="block text-punch">Track progress.</span>
