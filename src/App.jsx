@@ -238,7 +238,7 @@ function HeroVisual() {
       <motion.img
         src="/screens/5.png"
         alt=""
-        className="absolute right-0 top-24 z-20 w-[45%] rounded-[2rem] border border-ink/10 shadow-hard dark:border-white/10 dark:shadow-hard-dark"
+        className="absolute right-3 top-24 z-20 w-[45%] rounded-[2rem] border border-ink/10 shadow-hard dark:border-white/10 dark:shadow-hard-dark sm:right-0"
         initial={{ x: 90, rotate: 13, opacity: 0 }}
         animate={{ x: 0, rotate: 10, opacity: 1 }}
         transition={{ duration: 0.9, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
@@ -268,11 +268,11 @@ function Hero({ dark }) {
           variants={stagger}
           initial="hidden"
           animate="show"
-          className="relative z-10"
+          className="relative z-10 min-w-0"
         >
           <motion.h1
             variants={fadeUp}
-            className="max-w-4xl text-balance text-6xl font-black uppercase leading-[0.86] tracking-normal text-ink dark:text-white sm:text-7xl lg:text-8xl"
+            className="max-w-4xl text-balance text-[2.8rem] font-black uppercase leading-[0.88] tracking-normal text-ink dark:text-white min-[360px]:text-[3.25rem] sm:text-7xl sm:leading-[0.86] lg:text-8xl"
           >
             Play workouts.
             <span className="block text-punch">Track progress.</span>
@@ -287,11 +287,11 @@ function Hero({ dark }) {
           </motion.p>
           <motion.div
             variants={fadeUp}
-            className="mt-9 flex flex-col gap-3 sm:flex-row"
+            className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:items-stretch"
           >
             <a
               href="/#download"
-              className="group inline-flex h-14 items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1"
+              className="group inline-flex h-14 w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1 sm:w-auto sm:max-w-none"
             >
               <Download size={20} strokeWidth={2.8} />
               Get the app
@@ -302,7 +302,7 @@ function Hero({ dark }) {
             </a>
             <a
               href="/#screens"
-              className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl border border-ink/10 bg-white px-7 text-base font-black uppercase tracking-[0.12em] text-ink transition hover:-translate-y-1 hover:border-punch/50 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              className="inline-flex h-14 w-full max-w-sm items-center justify-center gap-3 rounded-2xl border border-ink/10 bg-white px-7 text-base font-black uppercase tracking-[0.12em] text-ink transition hover:-translate-y-1 hover:border-punch/50 dark:border-white/10 dark:bg-white/10 dark:text-white sm:w-auto sm:max-w-none"
             >
               <PlayCircle size={20} strokeWidth={2.8} />
               See screens
