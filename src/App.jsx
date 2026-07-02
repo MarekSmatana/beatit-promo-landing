@@ -32,6 +32,21 @@ function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+const downloadLinks = [
+  {
+    href: "https://apps.apple.com/app/id6778069102",
+    alt: "Download on App Store",
+    darkSrc: "/badges/app-store-light.svg",
+    lightSrc: "/badges/app-store-dark.svg",
+  },
+  {
+    href: "https://play.google.com/store/apps/details?id=com.builditstudio.beatit",
+    alt: "Get it on Google Play",
+    darkSrc: "/badges/google-play-light.svg",
+    lightSrc: "/badges/google-play-dark.svg",
+  },
+];
+
 function Nav({ dark, setDark }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-coal/70">
@@ -56,6 +71,34 @@ function Nav({ dark, setDark }) {
         <ThemeToggle dark={dark} setDark={setDark} />
       </nav>
     </header>
+  );
+}
+
+function StoreBadgeLinks({ dark, align = "center" }) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col items-center justify-center gap-4 sm:flex-row",
+        align === "start" && "lg:justify-start",
+      )}
+    >
+      {downloadLinks.map((link) => (
+        <motion.a
+          key={link.alt}
+          href={link.href}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-block rounded-md focus:outline-none focus:ring-2 focus:ring-punch focus:ring-offset-4 focus:ring-offset-white dark:focus:ring-offset-coal"
+          aria-label={link.alt}
+        >
+          <img
+            src={dark ? link.darkSrc : link.lightSrc}
+            alt={link.alt}
+            className="h-12 w-auto"
+          />
+        </motion.a>
+      ))}
+    </div>
   );
 }
 
@@ -115,63 +158,66 @@ function HeroVisual() {
   );
 }
 
-function Hero() {
+function Hero({ dark }) {
   return (
-		<section
-			id="top"
-			className="hero-grid relative isolate overflow-hidden pt-24"
-		>
-			<div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-white dark:to-coal" />
-			<div className="mx-auto grid min-h-[calc(100svh-6rem)] max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:py-16">
-				<motion.div
-					variants={stagger}
-					initial="hidden"
-					animate="show"
-					className="relative z-10"
-				>
-					<motion.h1
-						variants={fadeUp}
-						className="max-w-4xl text-balance text-6xl font-black uppercase leading-[0.86] tracking-normal text-ink dark:text-white sm:text-7xl lg:text-8xl"
-					>
-						Play workouts.
-						<span className="block text-punch">Track progress.</span>
-						Train smarter.
-					</motion.h1>
-					<motion.p
-						variants={fadeUp}
-						className="mt-7 max-w-2xl text-lg font-semibold leading-8 text-ink/70 dark:text-white/70 sm:text-xl"
-					>
-						Beat It turns workout generation, set-by-set execution, streaks,
-						body check-ins, and AI analysis into one fast training cockpit.
-					</motion.p>
-					<motion.div
-						variants={fadeUp}
-						className="mt-9 flex flex-col gap-3 sm:flex-row"
-					>
-						<a
-							href="/#download"
-							className="group inline-flex h-14 items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1"
-						>
-							<Download size={20} strokeWidth={2.8} />
-							Get the app
-							<ArrowRight
-								size={19}
-								className="transition group-hover:translate-x-1"
-							/>
-						</a>
-						<a
-							href="/#screens"
-							className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl border border-ink/10 bg-white px-7 text-base font-black uppercase tracking-[0.12em] text-ink transition hover:-translate-y-1 hover:border-punch/50 dark:border-white/10 dark:bg-white/10 dark:text-white"
-						>
-							<PlayCircle size={20} strokeWidth={2.8} />
-							See screens
-						</a>
-					</motion.div>
-				</motion.div>
-				<HeroVisual />
-			</div>
-		</section>
-	)
+    <section
+      id="top"
+      className="hero-grid relative isolate overflow-hidden pt-24"
+    >
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-white dark:to-coal" />
+      <div className="mx-auto grid min-h-[calc(100svh-6rem)] max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:py-16">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+          className="relative z-10"
+        >
+          <motion.h1
+            variants={fadeUp}
+            className="max-w-4xl text-balance text-6xl font-black uppercase leading-[0.86] tracking-normal text-ink dark:text-white sm:text-7xl lg:text-8xl"
+          >
+            Play workouts.
+            <span className="block text-punch">Track progress.</span>
+            Train smarter.
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            className="mt-7 max-w-2xl text-lg font-semibold leading-8 text-ink/70 dark:text-white/70 sm:text-xl"
+          >
+            Beat It turns workout generation, set-by-set execution, streaks,
+            body check-ins, and AI analysis into one fast training cockpit.
+          </motion.p>
+          <motion.div
+            variants={fadeUp}
+            className="mt-9 flex flex-col gap-3 sm:flex-row"
+          >
+            <a
+              href="/#download"
+              className="group inline-flex h-14 items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1"
+            >
+              <Download size={20} strokeWidth={2.8} />
+              Get the app
+              <ArrowRight
+                size={19}
+                className="transition group-hover:translate-x-1"
+              />
+            </a>
+            <a
+              href="/#screens"
+              className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl border border-ink/10 bg-white px-7 text-base font-black uppercase tracking-[0.12em] text-ink transition hover:-translate-y-1 hover:border-punch/50 dark:border-white/10 dark:bg-white/10 dark:text-white"
+            >
+              <PlayCircle size={20} strokeWidth={2.8} />
+              See screens
+            </a>
+          </motion.div>
+          <motion.div variants={fadeUp} className="mt-6">
+            <StoreBadgeLinks dark={dark} align="start" />
+          </motion.div>
+        </motion.div>
+        <HeroVisual />
+      </div>
+    </section>
+  )
 }
 
 function Pillars() {
@@ -380,64 +426,58 @@ function Manifesto() {
   );
 }
 
-function CTA() {
+function CTA({ dark }) {
   return (
-		<section
-			id="download"
-			className="relative overflow-hidden px-5 py-24 sm:px-8"
-		>
-			<div className="absolute inset-x-0 bottom-0 h-1/2 bg-punch" />
-			<motion.div
-				initial={{ opacity: 0, y: 40 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, margin: "-120px" }}
-				transition={{ duration: 0.65 }}
-				className="relative mx-auto max-w-5xl rounded-[2.5rem] border border-ink/10 bg-white p-7 text-center shadow-hard dark:border-white/10 dark:bg-coal dark:shadow-hard-dark sm:p-12"
-			>
-				<p className="text-sm font-black uppercase tracking-[0.22em] text-punch">
-					Beat It
-				</p>
-				<h2 className="mx-auto mt-4 max-w-3xl text-balance text-5xl font-black uppercase leading-none text-ink dark:text-white sm:text-7xl">
-					Beat yesterday starts here.
-				</h2>
-				<div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-					<a
-						href="#"
-						className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1"
-					>
-						<Download size={20} strokeWidth={2.8} />
-						Store links coming soon!
-					</a>
-					<a
-						href="/#top"
-						className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl border border-ink/10 bg-ink px-7 text-base font-black uppercase tracking-[0.12em] text-white transition hover:-translate-y-1 dark:border-white/10 dark:bg-white dark:text-coal"
-					>
-						Back to top
-						<ChevronDown size={20} className="rotate-180" strokeWidth={2.8} />
-					</a>
-				</div>
-			</motion.div>
-		</section>
-	)
+    <section
+      id="download"
+      className="relative overflow-hidden px-5 py-24 sm:px-8"
+    >
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-punch" />
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-120px" }}
+        transition={{ duration: 0.65 }}
+        className="relative mx-auto max-w-5xl rounded-[2.5rem] border border-ink/10 bg-white p-7 text-center shadow-hard dark:border-white/10 dark:bg-coal dark:shadow-hard-dark sm:p-12"
+      >
+        <p className="text-sm font-black uppercase tracking-[0.22em] text-punch">
+          Beat It
+        </p>
+        <h2 className="mx-auto mt-4 max-w-3xl text-balance text-5xl font-black uppercase leading-none text-ink dark:text-white sm:text-7xl">
+          Beat yesterday starts here.
+        </h2>
+        <div className="mt-8 flex flex-col items-center justify-center gap-5">
+          <StoreBadgeLinks dark={dark} />
+          <a
+            href="/#top"
+            className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl border border-ink/10 bg-ink px-7 text-base font-black uppercase tracking-[0.12em] text-white transition hover:-translate-y-1 dark:border-white/10 dark:bg-white dark:text-coal"
+          >
+            Back to top
+            <ChevronDown size={20} className="rotate-180" strokeWidth={2.8} />
+          </a>
+        </div>
+      </motion.div>
+    </section>
+  )
 }
 
-function LandingPage() {
+function LandingPage({ dark }) {
   return (
-		<main>
-			<Hero />
-			<Pillars />
-			<ScreenRail />
-			{featureSections.map((feature, index) => (
-				<FeatureSection
-					key={feature.headline}
-					feature={feature}
-					index={index}
-				/>
-			))}
-			{/* <Manifesto /> */}
-			<CTA />
-		</main>
-	)
+    <main>
+      <Hero dark={dark} />
+      <Pillars />
+      <ScreenRail />
+      {featureSections.map((feature, index) => (
+        <FeatureSection
+          key={feature.headline}
+          feature={feature}
+          index={index}
+        />
+      ))}
+      {/* <Manifesto /> */}
+      <CTA dark={dark} />
+    </main>
+  )
 }
 
 function getRouteKey() {
@@ -452,12 +492,12 @@ function getRouteKey() {
   return "home";
 }
 
-function RoutedPage() {
+function RoutedPage({ dark }) {
   const route = getRouteKey();
   if (route === "privacy") return <LegalPage page={legalPages.privacy} />;
   if (route === "terms") return <LegalPage page={legalPages.terms} />;
   if (route === "contact") return <ContactPage />;
-  return <LandingPage />;
+  return <LandingPage dark={dark} />;
 }
 
 export default function App() {
@@ -467,7 +507,7 @@ export default function App() {
     <MotionConfig reducedMotion="user">
       <div className="min-h-screen bg-white text-ink antialiased transition-colors duration-500 dark:bg-coal dark:text-white">
         <Nav dark={dark} setDark={setDark} />
-        <RoutedPage />
+        <RoutedPage dark={dark} />
         <Footer />
       </div>
     </MotionConfig>
