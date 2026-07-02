@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   motion,
   MotionConfig,
@@ -11,7 +11,9 @@ import {
   Check,
   ChevronDown,
   Download,
+  Menu,
   PlayCircle,
+  X,
 } from "lucide-react";
 import { BrandMark } from "./BrandMark";
 import { featureSections, pillars, screenshots } from "./data"
@@ -47,7 +49,44 @@ const downloadLinks = [
   },
 ];
 
+const appStoreUrl = downloadLinks[0].href;
+const googlePlayUrl = downloadLinks[1].href;
+
+function openDeviceDownload() {
+  if (typeof window === "undefined") return;
+
+  const userAgent = window.navigator.userAgent || "";
+  const isIpadOs =
+    window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1;
+
+  if (/android/i.test(userAgent)) {
+    window.location.href = googlePlayUrl;
+    return;
+  }
+
+  if (/iPad|iPhone|iPod/.test(userAgent) || isIpadOs) {
+    window.location.href = appStoreUrl;
+    return;
+  }
+
+  const downloadSection = document.getElementById("download");
+  if (downloadSection) {
+    downloadSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  window.location.href = "/#download";
+}
+
 function Nav({ dark, setDark }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  function handleDeviceDownload(event) {
+    event.preventDefault();
+    openDeviceDownload();
+    setMobileMenuOpen(false);
+  }
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-coal/70">
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
@@ -68,8 +107,67 @@ function Nav({ dark, setDark }) {
             Download
           </a>
         </div>
-        <ThemeToggle dark={dark} setDark={setDark} />
+        <div className="hidden md:block">
+          <ThemeToggle dark={dark} setDark={setDark} />
+        </div>
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href="/#download"
+            onClick={handleDeviceDownload}
+            className="grid size-11 place-items-center rounded-full border border-ink/10 bg-punch text-white shadow-sm transition dark:border-white/10"
+            aria-label="Download Beat It"
+          >
+            <Download size={19} strokeWidth={2.8} />
+          </a>
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((value) => !value)}
+            className="grid size-11 place-items-center rounded-full border border-ink/10 bg-white/80 text-ink shadow-sm transition dark:border-white/10 dark:bg-white/10 dark:text-white"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            {mobileMenuOpen ? (
+              <X size={21} strokeWidth={2.8} />
+            ) : (
+              <Menu size={21} strokeWidth={2.8} />
+            )}
+          </button>
+        </div>
       </nav>
+      {mobileMenuOpen && (
+        <div
+          id="mobile-menu"
+          className="border-t border-ink/10 bg-white/95 px-5 py-5 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-coal/95 md:hidden"
+        >
+          <div className="mx-auto grid max-w-7xl gap-3 text-sm font-black uppercase tracking-[0.16em] text-ink/70 dark:text-white/70">
+            <a
+              className="rounded-2xl px-4 py-3 transition hover:bg-ink/5 hover:text-punch dark:hover:bg-white/10"
+              href="/#features"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Features
+            </a>
+            <a
+              className="rounded-2xl px-4 py-3 transition hover:bg-ink/5 hover:text-punch dark:hover:bg-white/10"
+              href="/#screens"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Screens
+            </a>
+            <a
+              className="rounded-2xl px-4 py-3 transition hover:bg-ink/5 hover:text-punch dark:hover:bg-white/10"
+              href="/#download"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Download
+            </a>
+            <div className="mt-2 px-4">
+              <ThemeToggle dark={dark} setDark={setDark} />
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
