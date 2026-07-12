@@ -1,4 +1,4 @@
-export const legalUpdatedDate = "June 17, 2026";
+export const legalUpdatedDate = "July 13, 2026";
 export const supportEmail = "support@buildit.studio";
 
 export const privacyPolicy = {
@@ -24,6 +24,7 @@ export const privacyPolicy = {
         "Purchase and subscription information from the App Store, Google Play, and RevenueCat, such as entitlement status, product identifiers, transaction status, renewal status, app user ID, and subscription management URL. We do not receive your full payment card number.",
         "Support and contact information, such as your name, email address, message, support topic, and platform when you contact us or submit feedback.",
         "Permission and device-related information needed for app features, such as notification permission status, photo-library permission status, platform, app version, and local reminder configuration.",
+        "Product analytics collected through PostHog, such as app lifecycle events, screen views, touch interaction metadata, feature usage events, account or app user identifiers, selected profile properties such as username, display name, and unit system, purchase conversion events, workout and progress event metadata, and technical event properties such as latency or failure reason. We do not use PostHog for third-party advertising or cross-app tracking.",
         "Crash, diagnostic, and technical telemetry collected through Sentry, such as crash reports, error messages, stack traces, breadcrumbs, performance traces, session and release health data, app version, release environment, device and operating-system details, timestamps, coarse diagnostic tags, and the Beat It account or demo user ID associated with an event when available.",
       ],
     },
@@ -34,6 +35,7 @@ export const privacyPolicy = {
         "Create and save workout plans, workout history, progress entries, photos, streaks, programs, and custom catalog content.",
         "Operate AI workout generation and AI workout analysis when you choose to use those features.",
         "Manage subscriptions, premium entitlements, restores, and subscription support.",
+        "Measure product usage, feature adoption, funnels, retention, and conversion so we can improve Beat It.",
         "Monitor app stability, diagnose crashes and errors, improve performance, and prioritize reliability fixes.",
         "Respond to support requests, troubleshoot issues, prevent abuse, and protect the security of the app.",
         "Comply with legal obligations and enforce our Terms of Use.",
@@ -58,6 +60,12 @@ export const privacyPolicy = {
       ],
     },
     {
+      title: "Product Analytics",
+      body: [
+        "Beat It uses PostHog to understand how people use the app, such as which screens and features are used, whether onboarding, workouts, AI generation, program enrollment, progress check-ins, review prompts, and subscription flows are completed, and where errors or drop-offs occur. Analytics events are linked to an app or account identifier when available so we can measure retention and improve the product. We do not send free-form workout notes, feedback message text, or payment card numbers to PostHog, and we do not use PostHog for third-party advertising or cross-app tracking.",
+      ],
+    },
+    {
       title: "Crash and Diagnostics",
       body: [
         "Beat It uses Sentry to receive crash reports, handled error reports, performance traces, release health information, and related diagnostic data. We configure Sentry not to send default personally identifiable information. We currently attach only a Beat It account or demo user ID when available and an authentication-mode tag, and we do not enable Sentry error screenshots or view hierarchy capture.",
@@ -72,6 +80,7 @@ export const privacyPolicy = {
         "Supabase, for authentication, database storage, file storage, account maintenance, feedback submissions, and server-side functions.",
         "RevenueCat, Apple, and Google, for subscriptions, purchase verification, entitlement management, restores, billing support, and subscription management.",
         "OpenAI, when you choose to use AI workout generation or AI workout analysis.",
+        "PostHog, for product analytics, feature usage measurement, funnels, retention analysis, and product improvement.",
         "Sentry, for crash reporting, handled error reporting, performance monitoring, release health, diagnostic logs where enabled, and reliability troubleshooting.",
         "Email and support tools, when needed to receive and respond to your messages.",
         "Legal, safety, and compliance recipients, when required by law or necessary to protect rights, users, or the service.",
@@ -187,7 +196,7 @@ export const termsOfUse = {
     {
       title: "Third-Party Services",
       body: [
-        "Beat It relies on third-party services such as app stores, RevenueCat, Supabase, OpenAI, Sentry, and device operating-system services. Sentry may process crash reports, handled error reports, performance traces, release health information, and related diagnostics to help us operate and improve the app. Those services may have their own terms and policies. Buildit Studio is not responsible for third-party services outside our control.",
+        "Beat It relies on third-party services such as app stores, RevenueCat, Supabase, OpenAI, PostHog, Sentry, and device operating-system services. PostHog may process product analytics events and related identifiers to help us understand feature usage, funnels, retention, and conversion. Sentry may process crash reports, handled error reports, performance traces, release health information, and related diagnostics to help us operate and improve the app. Those services may have their own terms and policies. Buildit Studio is not responsible for third-party services outside our control.",
       ],
     },
     {
