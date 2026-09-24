@@ -1,14 +1,14 @@
-export const legalUpdatedDate = "July 13, 2026";
+export const legalUpdatedDate = "September 23, 2026";
 export const supportEmail = "support@buildit.studio";
 
 export const privacyPolicy = {
   eyebrow: "Legal",
   title: "Privacy Policy",
   subtitle:
-    "This Privacy Policy explains how Buildit Studio collects, uses, shares, and protects information when you use Beat It.",
+    "This Privacy Policy explains how Buildit Studio handles information in Beat It, including workout and social activity.",
   intro: [
     `Effective date: ${legalUpdatedDate}`,
-    `Buildit Studio ("Buildit Studio", "we", "us", or "our") provides Beat It, a workout planning, training, progress tracking, and workout analysis app. Questions or requests can be sent to ${supportEmail}.`,
+    `Buildit Studio ("Buildit Studio", "we", "us", or "our") provides Beat It, a workout planning, training, progress tracking, workout analysis, and social app. We are responsible for the personal information described here. Questions or requests can be sent to ${supportEmail}.`,
   ],
   sections: [
     {
@@ -23,6 +23,8 @@ export const privacyPolicy = {
         "AI feature inputs and outputs, such as workout-generation preferences, available equipment, target muscles, training preferences, selected exercise context, completed workout data, matching exercise history, and notes submitted for workout analysis. Workout analysis does not send photos.",
         "Purchase and subscription information from the App Store, Google Play, and RevenueCat, such as entitlement status, product identifiers, transaction status, renewal status, app user ID, and subscription management URL. We do not receive your full payment card number.",
         "Support and contact information, such as your name, email address, message, support topic, and platform when you contact us or submit feedback.",
+        "Social information, such as your username, display name, profile photo and bio, profile visibility choice, workout posts and their photos or notes, comments, likes, follows and follow requests, and the accounts you block.",
+        "Safety and moderation information, such as report descriptions and limited snapshots of reported content, the identities of reporters and reported accounts, review status, staff decisions and reasons, rule references, notices, appeal messages, and your acceptance of updated Terms.",
         "Permission and device-related information needed for app features, such as notification permission status, photo-library permission status, platform, app version, and local reminder configuration.",
         "Product analytics collected through PostHog, such as app lifecycle events, screen views, touch interaction metadata, feature usage events, account or app user identifiers, selected profile properties such as username, display name, and unit system, purchase conversion events, workout and progress event metadata, and technical event properties such as latency or failure reason. We do not use PostHog for third-party advertising or cross-app tracking.",
         "Crash, diagnostic, and technical telemetry collected through Sentry, such as crash reports, error messages, stack traces, breadcrumbs, performance traces, session and release health data, app version, release environment, device and operating-system details, timestamps, coarse diagnostic tags, and the Beat It account or demo user ID associated with an event when available.",
@@ -38,7 +40,24 @@ export const privacyPolicy = {
         "Measure product usage, feature adoption, funnels, retention, and conversion so we can improve Beat It.",
         "Monitor app stability, diagnose crashes and errors, improve performance, and prioritize reliability fixes.",
         "Respond to support requests, troubleshoot issues, prevent abuse, and protect the security of the app.",
+        "Operate social features, show content to eligible viewers, process follow and block choices, and prevent blocked accounts from viewing or interacting with one another in Beat It.",
+        "Review user reports, investigate safety concerns, enforce community rules, document decisions, notify affected users, and handle appeals. Posts, comments, and profile changes are not routinely checked or approved before publication, and we do not use automated content screening. Staff review follows reports or manual investigation.",
         "Comply with legal obligations and enforce our Terms of Use.",
+      ],
+    },
+    {
+      title: "Social Visibility and Your Choices",
+      body: [
+        "An account is required to use social features. Your username, display name, avatar, bio, and basic profile information may be visible to other signed-in users, including when you choose a private profile. A public profile lets other signed-in users view your shared workout posts. For a private profile, shared workout posts are limited to approved followers. A private workout or other training record is not made into a social post unless you choose to share it.",
+        "People who can view a post may also see its workout details, photos, notes, comments, likes, and associated profile information. Do not include sensitive health information, someone else's personal information, or photos you do not want eligible viewers to see. Others may save or screenshot material before you edit, hide, or delete it.",
+        "You can report a post, comment, or profile. Reports are not displayed to ordinary users or automatically published to the person reported. Authorized staff can review the description and a limited snapshot of the reported content. The reporter receives a general outcome notice; the affected user receives a notice if staff take a moderation action. We may withhold another person's identity or private details where appropriate for safety, privacy, or law.",
+        "Blocking an account hides the two accounts from one another within Beat It and permanently removes their follows, pending requests, and specified likes and comments between them. Unblocking permits future discovery and interaction but does not restore deleted interactions. Blocking cannot remove copies someone already saved outside Beat It.",
+      ],
+    },
+    {
+      title: "Legal Bases for Processing",
+      body: [
+        "Where the GDPR or similar law applies, we process account, workout, social, subscription, and requested AI-feature data as needed to provide the service and perform our contract with you. We process security logs, product diagnostics and usage analytics, abuse reports, moderation records, and related notices for our legitimate interests in keeping Beat It safe, reliable, and fair and understanding how it is used, balanced against your rights. We also process information where needed to comply with legal obligations or establish, exercise, or defend legal claims. Where a feature separately asks for consent, you may withdraw that consent through the relevant controls or by contacting us; withdrawal does not affect earlier lawful processing.",
       ],
     },
     {
@@ -82,6 +101,8 @@ export const privacyPolicy = {
         "OpenAI, when you choose to use AI workout generation or AI workout analysis.",
         "PostHog, for product analytics, feature usage measurement, funnels, retention analysis, and product improvement.",
         "Sentry, for crash reporting, handled error reporting, performance monitoring, release health, diagnostic logs where enabled, and reliability troubleshooting.",
+        "Other signed-in users, when you choose to share a profile or workout post with them, or when you interact with their content, subject to profile visibility and blocking controls.",
+        "Authorized Buildit Studio staff, for report review, safety investigations, support, appeals, and enforcement, with access limited to what they need for those purposes.",
         "Email and support tools, when needed to receive and respond to your messages.",
         "Legal, safety, and compliance recipients, when required by law or necessary to protect rights, users, or the service.",
       ],
@@ -90,6 +111,7 @@ export const privacyPolicy = {
       title: "Retention and Deletion",
       body: [
         "We keep account data for as long as needed to provide Beat It, maintain your account, comply with legal obligations, resolve disputes, and enforce agreements. You can delete individual items in the app where deletion is available. Signed-in users can clear account data or delete their account from Settings > Account. You can also request deletion by contacting us.",
+        "Reports, limited evidence snapshots, moderation decisions, notices, and Terms acceptance records are retained for the time reasonably needed to investigate reports, prevent repeat abuse, handle appeals or disputes, demonstrate compliance, or meet legal obligations, then deleted or de-identified where practicable. The applicable period depends on the case and any legal hold. Hiding a shared workout post does not by itself delete the underlying private workout or its photos. Access to case records is restricted to authorized staff.",
         "When an account is deleted, we delete or de-identify account data associated with that account unless we must retain limited information for legal, fraud-prevention, security, tax, accounting, or dispute-resolution reasons. Backup copies and logs may take additional time to expire.",
       ],
     },
@@ -105,7 +127,8 @@ export const privacyPolicy = {
         "Update profile, settings, reminders, workouts, progress entries, and photos inside the app.",
         "Disable app permissions such as notifications or photo-library access in your device settings.",
         "Cancel or manage subscriptions through the App Store or Google Play account used for purchase.",
-        "Request access, correction, export, deletion, or objection/restriction where applicable by contacting us.",
+        "Choose whether your profile is public or private, manage followers, delete available content, block or unblock other users, and ask us to review a moderation decision.",
+        "Request access, correction, export, deletion, restriction, or objection where applicable by contacting us. You may also complain to your local data-protection supervisory authority. We may need to verify your identity and may decline or limit a request where the law permits, including to protect another person's rights.",
       ],
     },
     {
@@ -117,7 +140,7 @@ export const privacyPolicy = {
     {
       title: "International Processing",
       body: [
-        "Your information may be processed in countries other than where you live. Where required, we rely on appropriate safeguards for international transfers through our service providers.",
+        "Your information may be processed in countries other than where you live. Where required for transfers outside the EEA or UK, we use an applicable legal transfer mechanism, such as an adequacy decision or standard contractual clauses, through our service providers. Contact us for more information about the safeguards relevant to your data.",
       ],
     },
     {
@@ -137,10 +160,10 @@ export const termsOfUse = {
   eyebrow: "Legal",
   title: "Terms of Use",
   subtitle:
-    "These Terms govern your access to and use of Beat It, including workout planning, training, progress tracking, subscriptions, and AI features.",
+    "These Terms govern your access to and use of Beat It, including workout planning, training, social features, subscriptions, and AI features.",
   intro: [
     `Effective date: ${legalUpdatedDate}`,
-    `These Terms of Use ("Terms") are between you and Buildit Studio ("Buildit Studio", "we", "us", or "our"). By using Beat It, you agree to these Terms. If you do not agree, do not use the app.`,
+    `These Terms of Use ("Terms") are between you and Buildit Studio ("Buildit Studio", "we", "us", or "our"). By using Beat It, you agree to these Terms. Social posting requires acceptance of the current social Terms in the app. If you do not agree, do not use the affected features.`,
   ],
   sections: [
     {
@@ -173,8 +196,15 @@ export const termsOfUse = {
     {
       title: "Your Content and Data",
       body: [
-        "You keep ownership of workouts, notes, progress entries, photos, and other content you add to Beat It. You grant Buildit Studio a limited license to host, process, transmit, display, back up, and otherwise use that content as needed to provide, secure, support, and improve Beat It.",
+        "You keep ownership of workouts, notes, progress entries, photos, and other content you add to Beat It. You grant Buildit Studio a non-exclusive, worldwide, royalty-free license, for as long as needed, to store, process, transmit, reproduce, and display that content only as needed to provide the features you use, show content to eligible viewers, secure and support the service, and conduct moderation. This does not transfer ownership to us. When you delete content, the license ends after removal from active systems, subject to reasonable backup, legal, and moderation-record retention.",
         "Do not upload content that you do not have the right to use, content that violates law, or content that infringes another person's rights.",
+      ],
+    },
+    {
+      title: "Sharing and Social Privacy",
+      body: [
+        "Your workout history remains private unless you choose to share a workout post. A shared post may include training details, notes, and photos. Other signed-in users can view posts from public profiles; only approved followers can view shared posts from private profiles. Basic profile details may still be discoverable when your profile is private. You are responsible for checking what you share before publishing.",
+        "You may follow others, approve requests to a private profile, like, and comment where available. You may also block another account. Blocking prevents the two accounts from finding or interacting with each other in Beat It and permanently removes their follows and pending requests, each person's likes and comments on the other's posts, and likes on each other's comments. It does not remove unrelated activity on third-party content. Unblocking does not restore removed interactions.",
       ],
     },
     {
@@ -191,6 +221,18 @@ export const termsOfUse = {
         "Do not attempt to access another user's account or data.",
         "Do not bypass subscription, entitlement, quota, or security controls.",
         "Do not upload malware, illegal content, or content that violates privacy, publicity, intellectual property, or other rights.",
+        "Do not post threats, harassment, bullying, hateful or discriminatory abuse, sexual exploitation content, graphic violence, or content that encourages self-harm or dangerous conduct.",
+        "Do not post sexual content involving minors, non-consensual intimate images, or content that promotes exploitation, violence, or illegal activity.",
+        "Do not share another person's private information without permission, impersonate others, spam, manipulate engagement, evade a block or restriction, or repeatedly contact someone after they ask you to stop.",
+        "Do not present dangerous exercise practices or unsupported medical claims as safe treatment, or deliberately mislead others about training risks.",
+      ],
+    },
+    {
+      title: "Social Content, Reports, and Moderation",
+      body: [
+        "Posts, comments, and profile changes appear without pre-approval. We do not routinely pre-screen, monitor, or edit user-posted content, and we do not use automated content screening. This does not mean content is permitted under these Terms. You can report a post, comment, or profile in the app; reporting does not automatically hide it. Staff may also review content without a report.",
+        "After human review, we may hide or restore a post, comment, or public profile, or suspend or restore an account's social activity for a violation of these Terms or a safety or legal concern. The measure depends on the nature, severity, and context of the issue. We may act without prior warning where appropriate, including to reduce harm or preserve evidence. A social suspension prevents new social posting and interactions and public-profile edits, but it does not by itself hide existing posts or prevent access to private workouts. Hiding a shared workout post does not delete the underlying private workout or its photos.",
+        `We provide the affected account with an in-app notice stating the action, reason, rule reference, date, and case ID. If you disagree, email ${supportEmail} with the case ID for a free review. We will consider your explanation and may uphold, change, or reverse the decision. Reporters receive a general outcome notice, not another person's private case details. We do not promise a particular response time or outcome.`,
       ],
     },
     {
@@ -202,7 +244,7 @@ export const termsOfUse = {
     {
       title: "Availability and Changes",
       body: [
-        "We may modify, suspend, or discontinue parts of Beat It at any time. We may also update these Terms. Continued use after changes become effective means you accept the updated Terms.",
+        "We may modify, suspend, or discontinue parts of Beat It, subject to applicable law. We may update these Terms and will post the effective date. For material social-rule changes, we may require your express acceptance in the app before further social posting. Continuing to use other available features after notice of a change means you accept the updated Terms where applicable law permits.",
       ],
     },
     {
@@ -214,13 +256,13 @@ export const termsOfUse = {
     {
       title: "Disclaimers",
       body: [
-        "Beat It is provided on an \"as is\" and \"as available\" basis. To the maximum extent permitted by law, Buildit Studio disclaims warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, availability, and uninterrupted operation.",
+        "Beat It is provided on an \"as is\" and \"as available\" basis. To the extent permitted by law, we do not promise that the app, user content, or AI output will be accurate, uninterrupted, or suitable for a particular training or medical purpose. This does not remove any guarantee or remedy that applicable consumer law gives you.",
       ],
     },
     {
       title: "Limitation of Liability",
       body: [
-        "To the maximum extent permitted by law, Buildit Studio will not be liable for indirect, incidental, special, consequential, exemplary, or punitive damages, or for lost profits, lost data, business interruption, personal injury, or property damage arising from your use of Beat It. Where liability cannot be excluded, it is limited to the greater of the amount you paid for Beat It in the 12 months before the claim or USD $50.",
+        "To the extent permitted by law, Buildit Studio is not liable for indirect or consequential losses that were not reasonably foreseeable. Nothing in these Terms excludes or limits liability for fraud, intentional misconduct, death or personal injury caused by our negligence, or any other liability that cannot legally be excluded or limited. Your mandatory consumer rights remain unaffected.",
       ],
     },
     {
