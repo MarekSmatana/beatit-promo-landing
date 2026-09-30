@@ -46,7 +46,8 @@ function pageShell({ title, description, imageUrl, canonicalUrl, body, status = 
   .brand{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:14px}
   .brand img{width:28px;height:28px;border-radius:7px}.preview-image{display:block;width:104px;height:104px;object-fit:cover;border-radius:22px;margin:28px auto 0;background:#27272a}
   .preview-image.post{width:100%;height:220px;border-radius:18px}h1{font-size:28px;line-height:1.15;margin:22px 0 8px}p{color:#a1a1aa;line-height:1.5;margin:0}.eyebrow{margin-top:24px;font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#ef4444}.actions{display:grid;gap:10px;margin-top:28px}
-  .button{display:block;border-radius:14px;padding:14px 18px;text-decoration:none;font-weight:800;background:#ef4444;color:#fff}.button.secondary{border:1px solid #52525b;background:#27272a}.button:hover{opacity:.88}.hint{margin-top:20px;font-size:12px}
+  .button{display:block;border-radius:14px;padding:14px 18px;text-decoration:none;font-weight:800;background:#ef4444;color:#fff}.button:hover{opacity:.88}
+  .store-badges{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:4px}.store-badge{display:inline-block;border-radius:6px;transition:transform .2s ease}.store-badge:hover{transform:scale(1.05)}.store-badge:focus-visible{outline:2px solid #ef4444;outline-offset:4px}.store-badge img{display:block;width:144px;height:48px}.hint{margin-top:20px;font-size:12px}
 </style></head><body><main><section class="card"><a class="brand" href="/"><img src="/brand/app-icon.png" alt="">Beat It</a>${body}</section></main></body></html>`, {
     status,
     headers: responseHeaders('text/html; charset=utf-8'),
@@ -56,8 +57,10 @@ function pageShell({ title, description, imageUrl, canonicalUrl, body, status = 
 function buttons(appPath) {
   return `<nav class="actions" aria-label="Open or install Beat It">
     <a class="button" href="beatit://${appPath}">Open in Beat It</a>
-    <a class="button secondary" href="${APP_STORE_URL}">Download on the App Store</a>
-    <a class="button secondary" href="${PLAY_STORE_URL}">Get it on Google Play</a>
+    <div class="store-badges">
+      <a class="store-badge" href="${APP_STORE_URL}"><img src="/badges/app-store-light.svg" alt="Download on the App Store" width="144" height="48"></a>
+      <a class="store-badge" href="${PLAY_STORE_URL}"><img src="/badges/google-play-light.svg" alt="Get it on Google Play" width="144" height="48"></a>
+    </div>
   </nav><p class="hint">Already installed? Open the shared link again to go straight to this page in the app.</p>`;
 }
 
