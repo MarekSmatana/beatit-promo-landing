@@ -89,6 +89,8 @@ npm run preview
 
 Then open the local preview URL and check `/`, `/privacy/`, `/terms/`, and `/contact/`.
 
+The build also includes a top-level `404.html`. Keep it in the output so a missing JavaScript asset returns a real 404 instead of the homepage HTML. Do not set a long-lived immutable cache header on `/assets/*` responses: a temporary HTML fallback at a script URL can otherwise leave browsers with a blank page. If this happens on the custom domain, inspect the script request's **Content-Type** and **CF-Cache-Status** in the browser Network panel. Purge the affected `getbeatit.app/assets` prefix in **Cloudflare → getbeatit.app → Caching → Configuration → Custom Purge**, then reload and confirm the script is served as JavaScript.
+
 ## Shareable profile and post links
 
 The site serves `https://getbeatit.app/user/<handle>` and `https://getbeatit.app/post/<post-UUID>` through Cloudflare Pages Functions. Each page loads the current public preview from Supabase. Its image endpoint checks visibility again for every request. Private, deleted, or moderation-hidden content returns a generic unavailable page. A released handle resolves to whoever currently owns it; old handles are not redirected or reserved.
