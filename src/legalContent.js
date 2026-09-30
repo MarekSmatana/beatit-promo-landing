@@ -163,7 +163,7 @@ export const termsOfUse = {
     "These Terms govern your access to and use of Beat It, including workout planning, training, social features, subscriptions, and AI features.",
   intro: [
     `Effective date: ${legalUpdatedDate}`,
-    `These Terms of Use ("Terms") are between you and Buildit Studio ("Buildit Studio", "we", "us", or "our"). By using Beat It, you agree to these Terms. Social posting requires acceptance of the current social Terms in the app. If you do not agree, do not use the affected features.`,
+    `These Terms of Use ("Terms") are between you and Buildit Studio ("Buildit Studio", "we", "us", or "our"). By creating an account or using Beat It, you agree to these Terms. If we make a material change, we may ask existing account holders to accept the updated Terms before further social posting. If you do not agree, do not use the affected features.`,
   ],
   sections: [
     {

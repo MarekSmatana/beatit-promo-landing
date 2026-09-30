@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.builditstudio.beatit",
+      "sha256_cert_fingerprints": [
+        "1F:0E:AE:B7:2B:02:84:ED:17:38:8F:12:6D:5F:FB:B0:60:C3:B4:95:4C:D5:92:6A:46:06:E6:94:07:73:09:CA"
+      ]
+    }
+  }
+]

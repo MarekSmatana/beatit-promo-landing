@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "2MDWH3923S.com.builditstudio.beatit",
+        "paths": ["/user/*", "/post/*"]
+      }
+    ]
+  }
+}
