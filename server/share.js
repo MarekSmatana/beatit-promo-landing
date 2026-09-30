@@ -47,7 +47,9 @@ function pageShell({ title, description, imageUrl, canonicalUrl, body, status = 
   .brand img{width:28px;height:28px;border-radius:7px}.preview-image{display:block;width:104px;height:104px;object-fit:cover;border-radius:22px;margin:28px auto 0;background:#27272a}
   .preview-image.post{width:100%;height:220px;border-radius:18px}h1{font-size:28px;line-height:1.15;margin:22px 0 8px}p{color:#a1a1aa;line-height:1.5;margin:0}.eyebrow{margin-top:24px;font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#ef4444}.actions{display:grid;gap:10px;margin-top:28px}
   .button{display:block;border-radius:14px;padding:14px 18px;text-decoration:none;font-weight:800;background:#ef4444;color:#fff}.button:hover{opacity:.88}
+  .share-actions{width:300px;max-width:100%;margin-left:auto;margin-right:auto}.share-actions .button{display:grid;place-items:center;min-height:48px;padding:10px 6px}
   .store-badges{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:4px}.store-badge{display:inline-block;border-radius:6px;transition:transform .2s ease}.store-badge:hover{transform:scale(1.05)}.store-badge:focus-visible{outline:2px solid #ef4444;outline-offset:4px}.store-badge img{display:block;width:144px;height:48px}.hint{margin-top:20px;font-size:12px}
+  @media(max-width:393px){.share-actions{width:144px}.store-badges{flex-direction:column}.share-actions .button{font-size:14px}}
 </style></head><body><main><section class="card"><a class="brand" href="/"><img src="/brand/app-icon.png" alt="">Beat It</a>${body}</section></main></body></html>`, {
     status,
     headers: responseHeaders('text/html; charset=utf-8'),
@@ -55,7 +57,7 @@ function pageShell({ title, description, imageUrl, canonicalUrl, body, status = 
 }
 
 function buttons(appPath) {
-  return `<nav class="actions" aria-label="Open or install Beat It">
+  return `<nav class="actions share-actions" aria-label="Open or install Beat It">
     <a class="button" href="beatit://${appPath}">Open in Beat It</a>
     <div class="store-badges">
       <a class="store-badge" href="${APP_STORE_URL}"><img src="/badges/app-store-light.svg" alt="Download on the App Store" width="144" height="48"></a>
