@@ -89,6 +89,8 @@ npm run preview
 
 Then open the local preview URL and check `/`, `/privacy/`, `/terms/`, and `/contact/`.
 
+To see the share page designs locally, run `npm run dev` and open `/user/demo_athlete` and `/post/00000000-0000-4000-8000-000000000001` on the local Vite URL. These are sample previews rendered by the production share template. They do not query Supabase; real public links are handled by Cloudflare Pages Functions after deployment.
+
 The build also includes a top-level `404.html`. Keep it in the output so a missing JavaScript asset returns a real 404 instead of the homepage HTML. Do not set a long-lived immutable cache header on `/assets/*` responses: a temporary HTML fallback at a script URL can otherwise leave browsers with a blank page. If this happens on the custom domain, inspect the script request's **Content-Type** and **CF-Cache-Status** in the browser Network panel. Purge the affected `getbeatit.app/assets` prefix in **Cloudflare → getbeatit.app → Caching → Configuration → Custom Purge**, then reload and confirm the script is served as JavaScript.
 
 ## Shareable profile and post links
