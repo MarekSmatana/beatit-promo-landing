@@ -1,4 +1,5 @@
 export const legalUpdatedDate = "September 23, 2026";
+export const privacyUpdatedDate = "October 23, 2026";
 export const supportEmail = "support@buildit.studio";
 
 export const privacyPolicy = {
@@ -7,7 +8,7 @@ export const privacyPolicy = {
   subtitle:
     "This Privacy Policy explains how Buildit Studio handles information in Beat It, including workout and social activity.",
   intro: [
-    `Effective date: ${legalUpdatedDate}`,
+    `Effective date: ${privacyUpdatedDate}`,
     `Buildit Studio ("Buildit Studio", "we", "us", or "our") provides Beat It, a workout planning, training, progress tracking, workout analysis, and social app. We are responsible for the personal information described here. Questions or requests can be sent to ${supportEmail}.`,
   ],
   sections: [
@@ -81,6 +82,7 @@ export const privacyPolicy = {
     {
       title: "Product Analytics",
       body: [
+        "We measure how our own Apple Ads campaigns lead to app opens, onboarding, completed workouts, and subscriptions. Apple's AdServices framework provides an attribution token that is exchanged for limited campaign metadata, such as campaign, ad-group and keyword identifiers, country or region, placement, and whether a download was a redownload. A random identifier stored with the app connects this metadata to app activity; when you sign in, your app account identifier connects it to subscription events from RevenueCat. Attribution tokens are used only for the exchange and are not included in analytics events or retained by our attribution service. We use this information to evaluate our own campaigns, not to build advertising audiences or send your workout contents to advertising networks. We do not collect IDFA for this measurement, use fingerprinting, or track you across other companies' apps or websites.",
         "Beat It uses PostHog to understand how people use the app, such as which screens and features are used, whether onboarding, workouts, AI generation, program enrollment, progress check-ins, review prompts, and subscription flows are completed, and where errors or drop-offs occur. Analytics events are linked to an app or account identifier when available so we can measure retention and improve the product. We do not send free-form workout notes, feedback message text, or payment card numbers to PostHog, and we do not use PostHog for third-party advertising or cross-app tracking.",
       ],
     },
@@ -99,7 +101,7 @@ export const privacyPolicy = {
         "Supabase, for authentication, database storage, file storage, account maintenance, feedback submissions, and server-side functions.",
         "RevenueCat, Apple, and Google, for subscriptions, purchase verification, entitlement management, restores, billing support, and subscription management.",
         "OpenAI, when you choose to use AI workout generation or AI workout analysis.",
-        "PostHog, for product analytics, feature usage measurement, funnels, retention analysis, and product improvement.",
+        "PostHog, for product analytics, feature usage measurement, funnels, retention analysis, first-party Apple Ads campaign measurement, and product improvement. Production and sandbox subscription events are sent to separate projects.",
         "Sentry, for crash reporting, handled error reporting, performance monitoring, release health, diagnostic logs where enabled, and reliability troubleshooting.",
         "Other signed-in users, when you choose to share a profile or workout post with them, or when you interact with their content, subject to profile visibility and blocking controls.",
         "Authorized Buildit Studio staff, for report review, safety investigations, support, appeals, and enforcement, with access limited to what they need for those purposes.",

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { createContactPayload, sendContactMessage } from "./contact";
 import { ArrowLeft, Mail, Send } from "lucide-react"
 import { BrandMark } from "./BrandMark";
 import { legalUpdatedDate, privacyPolicy, supportEmail, termsOfUse } from "./legalContent";
@@ -117,20 +118,26 @@ export function LegalPage({ page }) {
 }
 
 export function ContactPage() {
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState({ type: "idle", message: "" });
+  const submitting = useRef(false);
+  const isSubmitting = status.type === "submitting";
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const topic = String(data.get("topic") ?? "Support").trim();
-    const message = String(data.get("message") ?? "").trim();
-    const subject = `Beat It ${topic}`;
-    const body = [`Name: ${name}`, `Email: ${email}`, `Topic: ${topic}`, "", message].join("\n");
-
-    window.location.href = `mailto:${supportEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setStatus("Opening your email app. The message is not sent until you send it from your email client.");
+    if (submitting.current) return;
+    const form = event.currentTarget;
+    submitting.current = true;
+    try {
+      const payload = createContactPayload(new FormData(form));
+      setStatus({ type: "submitting", message: "" });
+      await sendContactMessage(payload);
+      form.reset();
+      setStatus({ type: "success", message: "Your message has been sent. We’ll reply to the email address you provided." });
+    } catch (error) {
+      setStatus({ type: "error", message: error instanceof Error ? error.message : "Your message could not be sent. Please try again or email us directly." });
+    } finally {
+      submitting.current = false;
+    }
   }
 
   return (
@@ -153,21 +160,28 @@ export function ContactPage() {
 						{supportEmail}
 					</a>
 					<p className="mt-6 text-base font-semibold leading-8 text-white/70 dark:text-coal/70">
-						This form opens a prefilled email draft. No message is sent until
-						you send it from your email app.
+						Send us a message using this form. We’ll reply to the email
+						address you provide. You can also email us directly.
 					</p>
 				</aside>
 
 				<form
 					onSubmit={handleSubmit}
+					aria-busy={isSubmitting}
+					onChange={() => {
+						if (!submitting.current && status.type !== "idle") setStatus({ type: "idle", message: "" });
+					}}
 					className="rounded-[2rem] border border-ink/10 bg-white p-6 shadow-hard dark:border-white/10 dark:bg-white/10 dark:shadow-hard-dark sm:p-8"
 				>
+					<input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" disabled={isSubmitting} />
 					<div className="grid gap-5 sm:grid-cols-2">
 						<label className="grid gap-2 text-sm font-black uppercase tracking-[0.16em] text-ink/60 dark:text-white/60">
 							Name
 							<input
 								required
 								name="name"
+								disabled={isSubmitting}
+								maxLength={100}
 								autoComplete="name"
 								className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
 								placeholder="Your name"
@@ -178,6 +192,8 @@ export function ContactPage() {
 							<input
 								required
 								name="email"
+								disabled={isSubmitting}
+								maxLength={150}
 								type="email"
 								autoComplete="email"
 								className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
@@ -189,6 +205,7 @@ export function ContactPage() {
 						Topic
 						<select
 							name="topic"
+								disabled={isSubmitting}
 							className="h-14 rounded-2xl border border-ink/10 bg-white px-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
 						>
 							<option>Support</option>
@@ -203,22 +220,29 @@ export function ContactPage() {
 						<textarea
 							required
 							name="message"
+								disabled={isSubmitting}
+								minLength={10}
+								maxLength={5000}
 							rows={8}
 							className="resize-y rounded-2xl border border-ink/10 bg-white px-4 py-4 text-base font-bold normal-case tracking-normal text-ink outline-none transition focus:border-punch dark:border-white/10 dark:bg-coal dark:text-white"
 							placeholder="Tell us what you need help with."
 						/>
 					</label>
-					{status ? (
-						<p className="mt-5 rounded-2xl bg-emerald-500/10 p-4 text-sm font-black text-emerald-700 dark:text-emerald-300">
-							{status}
+					{status.message ? (
+						<p
+						role={status.type === "error" ? "alert" : "status"}
+						className={`mt-5 rounded-2xl p-4 text-sm font-black ${status.type === "error" ? "bg-red-500/10 text-red-700 dark:text-red-300" : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"}`}
+						>
+						{status.message}
 						</p>
 					) : null}
 					<button
 						type="submit"
-						className="mt-6 inline-flex h-14 w-full items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1 sm:w-auto"
+						disabled={isSubmitting}
+						className="mt-6 inline-flex h-14 w-full items-center justify-center gap-3 rounded-2xl bg-punch px-7 text-base font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-red-500/25 transition hover:-translate-y-1 disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0 sm:w-auto"
 					>
 						<Send size={19} strokeWidth={2.8} />
-						Open email draft
+						{isSubmitting ? "Sending…" : "Send message"}
 					</button>
 				</form>
 			</main>
